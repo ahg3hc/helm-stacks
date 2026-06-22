@@ -1,0 +1,56 @@
+deployment:
+  enabled: true
+  replicas: 2
+  image:
+    repository: image-registry.openshift-image-registry.svc:5000/ci-dcmlp-openshift-cms-dev/dcmlp-cm-telegraf
+    tag: latest
+  ports:
+    - name: http-listener
+      containerPort: 5687
+  volumeMounts:
+    - name: config-volume
+      mountPath: /etc/telegraf/telegraf.conf
+      subPath: telegraf.conf
+      readOnly: true
+  volumes:
+    - name: config-volume
+      configMap:
+        name: dcmlp-cms-qa-telegraf-ppmpmeaslq05-http-config
+  env:
+    - name: INFLUX_TOKEN
+      valueFrom:
+        secretKeyRef:
+          name: dcmlp-cms-qa-influxdb-secret
+          key: INFLUXDB_TOKEN_ALL_BUCKETS_WRITE
+  resources:
+    limits:
+      cpu: 50m
+      memory: 300Mi
+    requests:
+      cpu: 10m
+      memory: 50Mi
+
+service:
+  enabled: true
+  ports:
+    - name: http-listener
+      port: 5687
+      targetPort: 5687
+
+route:
+  enabled: false
+
+configmap:
+  enabled: true
+  name: dcmlp-cms-qa-telegraf-ppmpmeaslq05-http-config
+  data:
+    telegraf.conf: |
+      [agent]
+        interval = "5s"
+      [[outputs.influxdb_v2]]
+        urls = ["http://dcmlp-cms-qa-influxdb:8086"]
+        token = "$INFLUX_TOKEN"
+        organization = "dcmlp"
+        bucket = "ppmpmeaslq05-http"
+      [[inputs.http_listener_v2]]
+        service_address = ":5687"

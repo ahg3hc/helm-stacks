@@ -1,0 +1,59 @@
+deployment:
+  enabled: true
+  replicas: 1
+  image:
+    repository: image-registry.openshift-image-registry.svc:5000/ci-dcmlp-openshift-cms-dev/dcmlp-cm-grafana-custom
+    tag: "12.2.0"
+  ports:
+    - name: http
+      containerPort: 3000
+  envFromSecrets:
+    - internetproxy
+    - dcmlp-cms-qa-grafana-secret
+  volumeMounts:
+    - name: grafana-storage
+      mountPath: /var/lib/grafana
+    - name: dcmlp-cms-qa-grafana-config
+      mountPath: /etc/grafana/provisioning
+    - name: grafana-email-templates
+      mountPath: /etc/grafana/emails
+    - name: dcmlp-cms-grafana-plant-layout-horp
+      mountPath: /etc/grafana/layouts/horp
+  volumes:
+    - name: grafana-storage
+      persistentVolumeClaim:
+        claimName: dcmlp-grafana-q-pvc
+    - name: dcmlp-cms-qa-grafana-config
+      configMap:
+        name: dcmlp-cms-qa-grafana-config
+    - name: grafana-email-templates
+      configMap:
+        name: grafana-email-templates
+    - name: dcmlp-cms-grafana-plant-layout-horp
+      configMap:
+        name: dcmlp-cms-grafana-plant-layout-horp
+  resources:
+    limits:
+      cpu: 100m
+      memory: 500Mi
+    requests:
+      cpu: 20m
+      memory: 50Mi
+
+service:
+  enabled: true
+  ports:
+    - name: http
+      port: 3000
+      targetPort: 3000
+
+route:
+  enabled: true
+  host: cm-dcmlp-q.app.bosch.com
+  targetPort: 3000
+  tls:
+    termination: edge
+
+pvc:
+  enabled: true
+  existingClaim: dcmlp-grafana-q-pvc

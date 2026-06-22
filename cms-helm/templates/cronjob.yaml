@@ -1,0 +1,45 @@
+{{- if .Values.cronjob }}
+{{- if .Values.cronjob.enabled }}
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app: {{ .Release.Name }}
+spec:
+  schedule: {{ .Values.cronjob.schedule | quote }}
+  concurrencyPolicy: {{ .Values.cronjob.concurrencyPolicy | default "Replace" }}
+  suspend: {{ .Values.cronjob.suspend | default false }}
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: {{ .Values.cronjob.restartPolicy | default "OnFailure" }}
+          containers:
+            - name: {{ .Release.Name }}
+              image: "{{ .Values.cronjob.image.repository }}:{{ .Values.cronjob.image.tag }}"
+              imagePullPolicy: {{ .Values.cronjob.image.pullPolicy | default "IfNotPresent" }}
+              {{- if .Values.cronjob.args }}
+              args:
+                {{- toYaml .Values.cronjob.args | nindent 16 }}
+              {{- end }}
+              {{- if .Values.cronjob.command }}
+              command:
+                {{- toYaml .Values.cronjob.command | nindent 16 }}
+              {{- end }}
+              {{- if .Values.cronjob.env }}
+              env:
+                {{- toYaml .Values.cronjob.env | nindent 16 }}
+              {{- end }}
+              {{- if .Values.cronjob.envFrom }}
+              envFrom:
+                {{- toYaml .Values.cronjob.envFrom | nindent 16 }}
+              {{- end }}
+              {{- if .Values.cronjob.resources }}
+              resources:
+                {{- toYaml .Values.cronjob.resources | nindent 16 }}
+              {{- end }}
+{{- end }}
+{{- end }}

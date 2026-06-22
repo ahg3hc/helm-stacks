@@ -1,0 +1,15 @@
+{{- if .Values.configmap }}
+{{- if .Values.configmap.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.configmap.name | default (printf "%s-config" .Release.Name) }}
+  labels:
+    app: {{ .Release.Name }}
+data:
+  {{- range $key, $value := .Values.configmap.data }}
+  {{ $key }}: |
+    {{- $value | nindent 4 }}
+  {{- end }}
+{{- end }}
+{{- end }}

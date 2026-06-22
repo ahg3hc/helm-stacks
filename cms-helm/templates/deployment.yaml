@@ -1,0 +1,58 @@
+{{- if .Values.deployment }}
+{{- if .Values.deployment.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app: {{ .Release.Name }}
+spec:
+  replicas: {{ if kindIs "invalid" .Values.deployment.replicas }}1{{ else }}{{ .Values.deployment.replicas }}{{ end }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Release.Name }}
+          image: "{{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}"
+          {{- if .Values.deployment.command }}
+          command:
+            {{- toYaml .Values.deployment.command | nindent 12 }}
+          {{- end }}
+          {{- if .Values.deployment.ports }}
+          ports:
+            {{- range .Values.deployment.ports }}
+            - name: {{ .name }}
+              containerPort: {{ .containerPort }}
+              protocol: {{ .protocol | default "TCP" }}
+            {{- end }}
+          {{- end }}
+          {{- if .Values.deployment.env }}
+          env:
+            {{- toYaml .Values.deployment.env | nindent 12 }}
+          {{- end }}
+          {{- if .Values.deployment.envFromSecrets }}
+          envFrom:
+            {{- range .Values.deployment.envFromSecrets }}
+            - secretRef:
+                name: {{ . }}
+            {{- end }}
+          {{- end }}
+          {{- if .Values.deployment.volumeMounts }}
+          volumeMounts:
+            {{- toYaml .Values.deployment.volumeMounts | nindent 12 }}
+          {{- end }}
+          {{- if .Values.deployment.resources }}
+          resources:
+            {{- toYaml .Values.deployment.resources | nindent 12 }}
+          {{- end }}
+      {{- if .Values.deployment.volumes }}
+      volumes:
+        {{- toYaml .Values.deployment.volumes | nindent 8 }}
+      {{- end }}
+{{- end }}
+{{- end }}

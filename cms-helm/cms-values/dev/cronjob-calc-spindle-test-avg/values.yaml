@@ -1,0 +1,33 @@
+cronjob:
+  enabled: true
+  schedule: "0 10 * * 1"
+  concurrencyPolicy: Replace
+  suspend: false
+  restartPolicy: OnFailure
+  image:
+    repository: image-registry.openshift-image-registry.svc:5000/ci-dcmlp-openshift-cms-dev/dcmlp-cm-cronjob-calc-spindle-test-avg
+    tag: "1.0.1"
+  args:
+    - python
+    - calc_spindle_test_avg.py
+  env:
+    - name: INFLUXDB_TOKEN_READ
+      valueFrom:
+        secretKeyRef:
+          name: dcmlp-cms-qa-influxdb-secret
+          key: INFLUXDB_TOKEN_ALL_BUCKETS_READ
+    - name: INFLUXDB_TOKEN_WRITE
+      valueFrom:
+        secretKeyRef:
+          name: dcmlp-cms-qa-influxdb-secret
+          key: INFLUXDB_TOKEN_DCMLP_CMS_DB_HorP_RESULT_WRITE
+  envFrom:
+    - configMapRef:
+        name: dcmlp-cms-dev-calc-spindle-test-avg-config
+  resources:
+    limits:
+      cpu: 30m
+      memory: 100Mi
+    requests:
+      cpu: 5m
+      memory: 10Mi

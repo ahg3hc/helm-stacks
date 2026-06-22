@@ -1,0 +1,53 @@
+deployment:
+  enabled: true
+  replicas: 1
+  image:
+    repository: image-registry.openshift-image-registry.svc:5000/ci-dcmlp-openshift-cms-dev/nginx
+    tag: "1.29.3-alpine"
+  command:
+    - nginx
+    - -g
+    - "daemon off;"
+  ports:
+    - name: http
+      containerPort: 8080
+  volumeMounts:
+    - name: nginx-config
+      mountPath: /etc/nginx/conf.d/default.conf
+      subPath: nginx.conf
+  volumes:
+    - name: nginx-config
+      configMap:
+        name: dcmlp-cms-qa-nginx-config
+  resources:
+    limits:
+      cpu: 10m
+      memory: 30Mi
+    requests:
+      cpu: 1m
+      memory: 1Mi
+
+service:
+  enabled: true
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+
+route:
+  enabled: false
+
+configmap:
+  enabled: true
+  name: dcmlp-cms-qa-nginx-config
+  data:
+    nginx.conf: |
+      server {
+          listen 8080;
+          server_name _;
+          location / {
+              proxy_pass http://dcmlp-cms-qa-grafana:3000;
+              proxy_set_header Host $host;
+              proxy_set_header X-Real-IP $remote_addr;
+          }
+      }

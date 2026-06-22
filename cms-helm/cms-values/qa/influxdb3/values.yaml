@@ -1,0 +1,41 @@
+deployment:
+  enabled: true
+  replicas: 0
+  image:
+    repository: image-registry.openshift-image-registry.svc:5000/ci-dcmlp-openshift-cms-dev/influxdb
+    tag: "3.8.0-core"
+  ports:
+    - name: http
+      containerPort: 8181
+  volumeMounts:
+    - name: influxdb3-data
+      mountPath: /var/lib/influxdb3
+  volumes:
+    - name: influxdb3-data
+      persistentVolumeClaim:
+        claimName: dcmlp-influxdb-qa-pvc
+  resources:
+    limits:
+      cpu: "1"
+      memory: 2000Mi
+    requests:
+      cpu: 100m
+      memory: 200Mi
+
+service:
+  enabled: true
+  ports:
+    - name: http
+      port: 8181
+      targetPort: 8181
+
+route:
+  enabled: true
+  host: cm-db-dcmlp-qa.app.bosch.com
+  targetPort: 8181
+  tls:
+    termination: edge
+
+pvc:
+  enabled: true
+  existingClaim: dcmlp-influxdb-qa-pvc

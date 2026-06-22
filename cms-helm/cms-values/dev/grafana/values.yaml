@@ -1,0 +1,63 @@
+deployment:
+  enabled: true
+  replicas: 1
+  image:
+    repository: image-registry.openshift-image-registry.svc:5000/ci-dcmlp-openshift-cms-dev/dcmlp-cm-grafana-custom
+    tag: "12.1.1"
+  ports:
+    - name: http
+      containerPort: 3000
+  envFromSecrets:
+    - internetproxy
+    - dcmlp-cms-dev-grafana-secret
+  volumeMounts:
+    - name: grafana-storage
+      mountPath: /var/lib/grafana
+    - name: dcmlp-cms-dev-grafana-config
+      mountPath: /etc/grafana/provisioning
+    - name: grafana-email-templates
+      mountPath: /etc/grafana/emails
+    - name: dcmlp-cms-grafana-plant-layout-horp
+      mountPath: /etc/grafana/layouts/horp
+    - name: dcmlp-cms-grafana-plant-layout-horp-zoom
+      mountPath: /etc/grafana/layouts/horp-zoom
+  volumes:
+    - name: grafana-storage
+      persistentVolumeClaim:
+        claimName: grafana-pvc
+    - name: dcmlp-cms-dev-grafana-config
+      configMap:
+        name: dcmlp-cms-dev-grafana-config
+    - name: grafana-email-templates
+      configMap:
+        name: grafana-email-templates
+    - name: dcmlp-cms-grafana-plant-layout-horp
+      configMap:
+        name: dcmlp-cms-grafana-plant-layout-horp
+    - name: dcmlp-cms-grafana-plant-layout-horp-zoom
+      configMap:
+        name: dcmlp-cms-grafana-plant-layout-horp-zoom
+  resources:
+    limits:
+      cpu: 100m
+      memory: 300Mi
+    requests:
+      cpu: 10m
+      memory: 100Mi
+
+service:
+  enabled: true
+  ports:
+    - name: http
+      port: 3000
+      targetPort: 3000
+
+route:
+  enabled: true
+  targetPort: 3000
+  tls:
+    termination: edge
+
+pvc:
+  enabled: true
+  existingClaim: grafana-pvc

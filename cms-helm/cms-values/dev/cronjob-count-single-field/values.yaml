@@ -1,0 +1,33 @@
+cronjob:
+  enabled: true
+  schedule: "*/5 * * * *"
+  concurrencyPolicy: Replace
+  suspend: true
+  restartPolicy: OnFailure
+  image:
+    repository: image-registry.openshift-image-registry.svc:5000/ci-dcmlp-openshift-cms-dev/dcmlp-cm-cronjob-count-single-field
+    tag: "1.0.4"
+  args:
+    - python
+    - count_single_field.py
+  env:
+    - name: INFLUXDB_TOKEN_READ
+      valueFrom:
+        secretKeyRef:
+          name: dcmlp-cms-qa-influxdb-secret
+          key: INFLUXDB_TOKEN_ALL_BUCKETS_READ
+    - name: INFLUXDB_TOKEN_WRITE
+      valueFrom:
+        secretKeyRef:
+          name: dcmlp-cms-qa-influxdb-secret
+          key: INFLUXDB_TOKEN_DCMLP_CMS_DB_Test_WRITE
+  envFrom:
+    - configMapRef:
+        name: dcmlp-cms-dev-cronjob-python-test
+  resources:
+    limits:
+      cpu: 10m
+      memory: 25Mi
+    requests:
+      cpu: 2m
+      memory: 5Mi

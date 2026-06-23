@@ -3,29 +3,29 @@ cluster:
 
 apps:
   # ===== CMS DEV =====
-  # cms-dev-grafana:
-  #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
-  #   targetRevision: main
-  #   chartPath: cms-helm
-  #   valuePath: cms-values/dev/grafana
-  #   namespace: ci-dcmlp-openshift
+  cms-dev-grafana:
+    enabled: true
+    repoURL: https://github.com/ahg3hc/helm-stacks.git
+    targetRevision: main
+    chartPath: cms-helm
+    valuePath: cms-values/dev/grafana
+    namespace: ci-dcmlp-openshift
 
-  # cms-dev-influxdb:
-  #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
-  #   targetRevision: main
-  #   chartPath: cms-helm
-  #   valuePath: cms-values/dev/influxdb
-  #   namespace: ci-dcmlp-openshift
+  cms-dev-influxdb:
+    enabled: true
+    repoURL: https://github.com/ahg3hc/helm-stacks.git
+    targetRevision: main
+    chartPath: cms-helm
+    valuePath: cms-values/dev/influxdb
+    namespace: ci-dcmlp-openshift
 
-  # cms-dev-nginx:
-  #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
-  #   targetRevision: main
-  #   chartPath: cms-helm
-  #   valuePath: cms-values/dev/nginx
-  #   namespace: ci-dcmlp-openshift
+  cms-dev-nginx:
+    enabled: true
+    repoURL: https://github.com/ahg3hc/helm-stacks.git
+    targetRevision: main
+    chartPath: cms-helm
+    valuePath: cms-values/dev/nginx
+    namespace: ci-dcmlp-openshift
 
   # cms-dev-telegraf-ppmpmachlq10:
   #   enabled: true

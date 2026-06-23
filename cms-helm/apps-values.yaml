@@ -1,5 +1,5 @@
 cluster:
-  project: dcmlp-cms
+  project: cms
 
 apps:
   # ===== CMS DEV =====

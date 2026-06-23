@@ -2,7 +2,7 @@ deployment:
   enabled: true
   replicas: 2
   image:
-    repository: image-registry.openshift-image-registry.svc:5000/ci-dcmlp-openshift-cms-dev/dcmlp-cm-telegraf
+    repository: image-registry.openshift-image-registry.svc:5000/ci-dcmlp-openshift/dcmlp-cm-telegraf
     tag: latest
   ports:
     - name: http-listener

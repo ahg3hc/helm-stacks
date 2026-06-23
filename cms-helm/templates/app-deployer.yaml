@@ -1,0 +1,30 @@
+{{- if .Values.apps }}
+{{- range $name, $app := .Values.apps }}
+{{- if $app.enabled }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ $name }}
+  namespace: openshift-gitops
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: {{ $app.project | default $.Values.cluster.project }}
+  source:
+    repoURL: {{ $app.repoURL }}
+    targetRevision: {{ $app.targetRevision }}
+    path: {{ $app.chartPath }}
+    helm:
+      valueFiles:
+        - {{ $app.valuePath }}/values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: {{ $app.namespace }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+{{- end }}
+{{- end }}
+{{- end }}

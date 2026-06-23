@@ -2,7 +2,7 @@ deployment:
   enabled: true
   replicas: 0
   image:
-    repository: image-registry.openshift-image-registry.svc:5000/ci-dcmlp-openshift-cms-dev/influxdb
+    repository: image-registry.openshift-image-registry.svc:5000/ci-dcmlp-openshift/influxdb
     tag: "3.8.0-core"
   ports:
     - name: http

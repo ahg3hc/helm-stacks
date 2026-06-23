@@ -120,7 +120,7 @@ apps:
   #   enabled: true
   #   repoURL: https://github.com/ahg3hc/helm-stacks.git
   #   targetRevision: main
-  #   chartPath: CMS/cms-helm
+  #   chartPath: cms-helm
   #   valuePath: cms-values/qa/grafana
   #   namespace: ci-dcmlp-openshift
 
@@ -128,7 +128,7 @@ apps:
   #   enabled: true
   #   repoURL: https://github.com/ahg3hc/helm-stacks.git
   #   targetRevision: main
-  #   chartPath: CMS/cms-helm
+  #   chartPath: cms-helm
   #   valuePath: cms-values/qa/influxdb
   #   namespace: ci-dcmlp-openshift
 
@@ -136,7 +136,7 @@ apps:
   #   enabled: true
   #   repoURL: https://github.com/ahg3hc/helm-stacks.git
   #   targetRevision: main
-  #   chartPath: CMS/cms-helm
+  #   chartPath: cms-helm
   #   valuePath: cms-values/qa/influxdb3
   #   namespace: ci-dcmlp-openshift
 
@@ -144,7 +144,7 @@ apps:
   #   enabled: true
   #   repoURL: https://github.com/ahg3hc/helm-stacks.git
   #   targetRevision: main
-  #   chartPath: CMS/cms-helm
+  #   chartPath: cms-helm
   #   valuePath: cms-values/qa/nginx
   #   namespace: ci-dcmlp-openshift
 
@@ -152,7 +152,7 @@ apps:
   #   enabled: true
   #   repoURL: https://github.com/ahg3hc/helm-stacks.git
   #   targetRevision: main
-  #   chartPath: CMS/cms-helm
+  #   chartPath: cms-helm
   #   valuePath: cms-values/qa/telegraf-ppmpmachlq10
   #   namespace: ci-dcmlp-openshift
 
@@ -160,7 +160,7 @@ apps:
   #   enabled: true
   #   repoURL: https://github.com/ahg3hc/helm-stacks.git
   #   targetRevision: main
-  #   chartPath: CMS/cms-helm
+  #   chartPath: cms-helm
   #   valuePath: cms-values/qa/telegraf-ppmpmachlq10-http
   #   namespace: ci-dcmlp-openshift
 
@@ -168,7 +168,7 @@ apps:
   #   enabled: true
   #   repoURL: https://github.com/ahg3hc/helm-stacks.git
   #   targetRevision: main
-  #   chartPath: CMS/cms-helm
+  #   chartPath: cms-helm
   #   valuePath: cms-values/qa/telegraf-ppmpmeaslq05
   #   namespace: ci-dcmlp-openshift
 
@@ -176,6 +176,6 @@ apps:
   #   enabled: true
   #   repoURL: https://github.com/ahg3hc/helm-stacks.git
   #   targetRevision: main
-  #   chartPath: CMS/cms-helm
+  #   chartPath: cms-helm
   #   valuePath: cms-values/qa/telegraf-ppmpmeaslq05-http
   #   namespace: ci-dcmlp-openshift

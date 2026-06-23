@@ -1,6 +1,9 @@
 deployment:
   enabled: true
   replicas: 0
+  securityContext:
+    fsGroup: 1500
+    runAsUser: 1500
   image:
     repository: image-registry.openshift-image-registry.svc:5000/ci-dcmlp-openshift/influxdb
     tag: "3.8.0-core"

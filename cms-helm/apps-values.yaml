@@ -23,7 +23,7 @@ apps:
     enabled: true
     repoURL: https://github.com/ahg3hc/helm-stacks.git
     targetRevision: HEAD
-    chartPath: CMS/cms-helm
+    chartPath: cms-helm
     valuePath: cms-values/dev/nginx
     namespace: ci-dcmlp-openshift
 
@@ -31,7 +31,7 @@ apps:
     enabled: true
     repoURL: https://github.com/ahg3hc/helm-stacks.git
     targetRevision: HEAD
-    chartPath: CMS/cms-helm
+    chartPath: cms-helm
     valuePath: cms-values/dev/telegraf-ppmpmachlq10
     namespace: ci-dcmlp-openshift
 
@@ -39,7 +39,7 @@ apps:
     enabled: true
     repoURL: https://github.com/ahg3hc/helm-stacks.git
     targetRevision: HEAD
-    chartPath: CMS/cms-helm
+    chartPath: cms-helm
     valuePath: cms-values/dev/telegraf-ppmpmeaslq05
     namespace: ci-dcmlp-openshift
 
@@ -47,7 +47,7 @@ apps:
     enabled: true
     repoURL: https://github.com/ahg3hc/helm-stacks.git
     targetRevision: HEAD
-    chartPath: CMS/cms-helm
+    chartPath: cms-helm
     valuePath: cms-values/dev/telegraf-ppmpmeaslq05-old
     namespace: ci-dcmlp-openshift
 
@@ -55,7 +55,7 @@ apps:
     enabled: true
     repoURL: https://github.com/ahg3hc/helm-stacks.git
     targetRevision: HEAD
-    chartPath: CMS/cms-helm
+    chartPath: cms-helm
     valuePath: cms-values/dev/telegraf-ppmpmeaslq05-mcm1all
     namespace: ci-dcmlp-openshift
 
@@ -63,7 +63,7 @@ apps:
     enabled: true
     repoURL: https://github.com/ahg3hc/helm-stacks.git
     targetRevision: HEAD
-    chartPath: CMS/cms-helm
+    chartPath: cms-helm
     valuePath: cms-values/dev/telegraf-ppmpmeaslq05-mcm2miss
     namespace: ci-dcmlp-openshift
 
@@ -71,7 +71,7 @@ apps:
     enabled: true
     repoURL: https://github.com/ahg3hc/helm-stacks.git
     targetRevision: HEAD
-    chartPath: CMS/cms-helm
+    chartPath: cms-helm
     valuePath: cms-values/dev/telegraf-ppmpmeaslq05-mcm2rest
     namespace: ci-dcmlp-openshift
 
@@ -79,7 +79,7 @@ apps:
     enabled: true
     repoURL: https://github.com/ahg3hc/helm-stacks.git
     targetRevision: HEAD
-    chartPath: CMS/cms-helm
+    chartPath: cms-helm
     valuePath: cms-values/dev/telegraf-ppmptest1
     namespace: ci-dcmlp-openshift
 
@@ -87,7 +87,7 @@ apps:
     enabled: true
     repoURL: https://github.com/ahg3hc/helm-stacks.git
     targetRevision: HEAD
-    chartPath: CMS/cms-helm
+    chartPath: cms-helm
     valuePath: cms-values/dev/telegraf-ppmptest2
     namespace: ci-dcmlp-openshift
 
@@ -95,7 +95,7 @@ apps:
     enabled: true
     repoURL: https://github.com/ahg3hc/helm-stacks.git
     targetRevision: HEAD
-    chartPath: CMS/cms-helm
+    chartPath: cms-helm
     valuePath: cms-values/dev/cronjob-calc-axis-test-avg
     namespace: ci-dcmlp-openshift
 
@@ -103,7 +103,7 @@ apps:
     enabled: true
     repoURL: https://github.com/ahg3hc/helm-stacks.git
     targetRevision: HEAD
-    chartPath: CMS/cms-helm
+    chartPath: cms-helm
     valuePath: cms-values/dev/cronjob-calc-spindle-test-avg
     namespace: ci-dcmlp-openshift
 
@@ -111,7 +111,7 @@ apps:
     enabled: true
     repoURL: https://github.com/ahg3hc/helm-stacks.git
     targetRevision: HEAD
-    chartPath: CMS/cms-helm
+    chartPath: cms-helm
     valuePath: cms-values/dev/cronjob-count-single-field
     namespace: ci-dcmlp-openshift
 

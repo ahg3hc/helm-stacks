@@ -16,6 +16,14 @@ spec:
       labels:
         app: {{ .Release.Name }}
     spec:
+      {{- if .Values.deployment.securityContext }}
+      securityContext:
+        {{- toYaml .Values.deployment.securityContext | nindent 8 }}
+      {{- end }}
+      {{- if .Values.deployment.initContainers }}
+      initContainers:
+        {{- toYaml .Values.deployment.initContainers | nindent 8 }}
+      {{- end }}
       containers:
         - name: {{ .Release.Name }}
           image: "{{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}"

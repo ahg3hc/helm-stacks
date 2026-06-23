@@ -42,7 +42,7 @@ configmap:
           listen 8080;
           server_name _;
           location / {
-              proxy_pass http://dcmlp-cms-dev-grafana:3000;
+              proxy_pass http://cms-dev-grafana:3000;
               proxy_set_header Host $host;
               proxy_set_header X-Real-IP $remote_addr;
           }

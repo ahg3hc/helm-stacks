@@ -3,93 +3,93 @@ cluster:
 
 apps:
   # ===== CMS DEV =====
-  cms-dev-grafana:
+  # cms-dev-grafana:
+  #   enabled: true
+  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   targetRevision: main
+  #   chartPath: cms-helm
+  #   valuePath: cms-values/dev/grafana
+  #   namespace: ci-dcmlp-openshift
+
+  # cms-dev-influxdb:
+  #   enabled: true
+  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   targetRevision: main
+  #   chartPath: cms-helm
+  #   valuePath: cms-values/dev/influxdb
+  #   namespace: ci-dcmlp-openshift
+
+  # cms-dev-nginx:
+  #   enabled: true
+  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   targetRevision: main
+  #   chartPath: cms-helm
+  #   valuePath: cms-values/dev/nginx
+  #   namespace: ci-dcmlp-openshift
+
+  cms-dev-telegraf-ppmpmachlq10:
     enabled: true
     repoURL: https://github.com/ahg3hc/helm-stacks.git
     targetRevision: main
     chartPath: cms-helm
-    valuePath: cms-values/dev/grafana
+    valuePath: cms-values/dev/telegraf-ppmpmachlq10
     namespace: ci-dcmlp-openshift
 
-  cms-dev-influxdb:
+  cms-dev-telegraf-ppmpmeaslq05:
     enabled: true
     repoURL: https://github.com/ahg3hc/helm-stacks.git
     targetRevision: main
     chartPath: cms-helm
-    valuePath: cms-values/dev/influxdb
+    valuePath: cms-values/dev/telegraf-ppmpmeaslq05
     namespace: ci-dcmlp-openshift
 
-  cms-dev-nginx:
+  cms-dev-telegraf-ppmpmeaslq05-old:
     enabled: true
     repoURL: https://github.com/ahg3hc/helm-stacks.git
     targetRevision: main
     chartPath: cms-helm
-    valuePath: cms-values/dev/nginx
+    valuePath: cms-values/dev/telegraf-ppmpmeaslq05-old
     namespace: ci-dcmlp-openshift
 
-  # cms-dev-telegraf-ppmpmachlq10:
-  #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
-  #   targetRevision: main
-  #   chartPath: cms-helm
-  #   valuePath: cms-values/dev/telegraf-ppmpmachlq10
-  #   namespace: ci-dcmlp-openshift
+  cms-dev-telegraf-ppmpmeaslq05-mcm1all:
+    enabled: true
+    repoURL: https://github.com/ahg3hc/helm-stacks.git
+    targetRevision: main
+    chartPath: cms-helm
+    valuePath: cms-values/dev/telegraf-ppmpmeaslq05-mcm1all
+    namespace: ci-dcmlp-openshift
 
-  # cms-dev-telegraf-ppmpmeaslq05:
-  #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
-  #   targetRevision: main
-  #   chartPath: cms-helm
-  #   valuePath: cms-values/dev/telegraf-ppmpmeaslq05
-  #   namespace: ci-dcmlp-openshift
+  cms-dev-telegraf-ppmpmeaslq05-mcm2miss:
+    enabled: true
+    repoURL: https://github.com/ahg3hc/helm-stacks.git
+    targetRevision: main
+    chartPath: cms-helm
+    valuePath: cms-values/dev/telegraf-ppmpmeaslq05-mcm2miss
+    namespace: ci-dcmlp-openshift
 
-  # cms-dev-telegraf-ppmpmeaslq05-old:
-  #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
-  #   targetRevision: main
-  #   chartPath: cms-helm
-  #   valuePath: cms-values/dev/telegraf-ppmpmeaslq05-old
-  #   namespace: ci-dcmlp-openshift
+  cms-dev-telegraf-ppmpmeaslq05-mcm2rest:
+    enabled: true
+    repoURL: https://github.com/ahg3hc/helm-stacks.git
+    targetRevision: main
+    chartPath: cms-helm
+    valuePath: cms-values/dev/telegraf-ppmpmeaslq05-mcm2rest
+    namespace: ci-dcmlp-openshift
 
-  # cms-dev-telegraf-ppmpmeaslq05-mcm1all:
-  #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
-  #   targetRevision: main
-  #   chartPath: cms-helm
-  #   valuePath: cms-values/dev/telegraf-ppmpmeaslq05-mcm1all
-  #   namespace: ci-dcmlp-openshift
+  cms-dev-telegraf-ppmptest1:
+    enabled: true
+    repoURL: https://github.com/ahg3hc/helm-stacks.git
+    targetRevision: main
+    chartPath: cms-helm
+    valuePath: cms-values/dev/telegraf-ppmptest1
+    namespace: ci-dcmlp-openshift
 
-  # cms-dev-telegraf-ppmpmeaslq05-mcm2miss:
-  #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
-  #   targetRevision: main
-  #   chartPath: cms-helm
-  #   valuePath: cms-values/dev/telegraf-ppmpmeaslq05-mcm2miss
-  #   namespace: ci-dcmlp-openshift
-
-  # cms-dev-telegraf-ppmpmeaslq05-mcm2rest:
-  #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
-  #   targetRevision: main
-  #   chartPath: cms-helm
-  #   valuePath: cms-values/dev/telegraf-ppmpmeaslq05-mcm2rest
-  #   namespace: ci-dcmlp-openshift
-
-  # cms-dev-telegraf-ppmptest1:
-  #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
-  #   targetRevision: main
-  #   chartPath: cms-helm
-  #   valuePath: cms-values/dev/telegraf-ppmptest1
-  #   namespace: ci-dcmlp-openshift
-
-  # cms-dev-telegraf-ppmptest2:
-  #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
-  #   targetRevision: main
-  #   chartPath: cms-helm
-  #   valuePath: cms-values/dev/telegraf-ppmptest2
-  #   namespace: ci-dcmlp-openshift
+  cms-dev-telegraf-ppmptest2:
+    enabled: true
+    repoURL: https://github.com/ahg3hc/helm-stacks.git
+    targetRevision: main
+    chartPath: cms-helm
+    valuePath: cms-values/dev/telegraf-ppmptest2
+    namespace: ci-dcmlp-openshift
 
   # cms-dev-cronjob-calc-axis:
   #   enabled: true

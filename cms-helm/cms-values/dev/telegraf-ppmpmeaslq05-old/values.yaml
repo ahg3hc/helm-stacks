@@ -1,6 +1,6 @@
 deployment:
   enabled: true
-  replicas: 1
+  replicas: 0
   image:
     repository: image-registry.openshift-image-registry.svc:5000/ci-dcmlp-openshift/dcmlp-cm-telegraf
     tag: latest
@@ -17,11 +17,21 @@ deployment:
       configMap:
         name: dcmlp-cms-dev-telegraf-ppmpmeaslq05-old-config
   env:
-    - name: INFLUX_TOKEN
+    - name: INFLUXDB_TOKEN_WRITE
       valueFrom:
         secretKeyRef:
           name: dcmlp-cms-dev-influxdb-secret
           key: INFLUXDB_TOKEN_ALL_BUCKETS_WRITE
+    - name: MQTT_USER
+      valueFrom:
+        secretKeyRef:
+          name: dcmlp-solace-q-secret
+          key: MQTT_USER
+    - name: MQTT_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: dcmlp-solace-q-secret
+          key: MQTT_PASSWORD
   resources:
     limits:
       cpu: 20m
@@ -42,12 +52,52 @@ configmap:
   data:
     telegraf.conf: |
       [agent]
-        interval = "10s"
-        flush_interval = "10s"
+          interval = "5s"
+          round_interval = true
+          metric_batch_size = 2000
+          metric_buffer_limit = 20000
+          collection_jitter = "0s"
+          flush_interval = "5s"
+          flush_jitter = "0s"
+          omit_hostname = false
+          skip_processors_after_aggregators = false
+          debug = true
+
+      [[inputs.mqtt_consumer]]
+          servers = ["mqtts://si0vm02988.de.bosch.com:10320"]
+          topics = [
+            "PPMP/Measurement/V2/HorP/#",
+            "PPMP/Measurement/V2/HoP2/#"
+            ]
+          username = "${MQTT_USER}"
+          password = "${MQTT_PASSWORD}"
+          tls_ca = "/etc/telegraf/certs/Bosch-MQTT.pem"
+          insecure_skip_verify = true
+          data_format = "value"
+          data_type = "string"
+          [inputs.mqtt_consumer.tagpass]
+            topic = [
+              "PPMP/Measurement/V2/HoP2/lq10/405497280000000002001631",
+              "PPMP/Measurement/V2/HoP2/lq10/405497280000000000362072",
+              "PPMP/Measurement/V2/HoP2/lq10/405497280000000000361909",
+              "PPMP/Measurement/V2/HoP2/lq10/405497280000000000361578",
+              "PPMP/Measurement/V2/HoP2/lq10/405497280000000000361943",
+              "PPMP/Measurement/V2/HoP2/lq10/405497280000000000361934",
+              "PPMP/Measurement/V2/HoP2/lq10/405497280000000000361962",
+              "PPMP/Measurement/V2/HoP2/lq10/405497280000000000362120",
+              "PPMP/Measurement/V2/HoP2/lq10/405497280000000000362059",
+              "PPMP/Measurement/V2/HoP2/lq10/405497280000000000361522",
+              "PPMP/Measurement/V2/HoP2/lq10/405497280000000000361566",
+              "PPMP/Measurement/V2/HoP2/lq10/405497280000000000361495"
+            ]
+
+      [[processors.starlark]]
+          script = "/etc/telegraf/star/PPMPMeasurementV2_lq05_mqtt_v1.0.star"
+
       [[outputs.influxdb_v2]]
-        urls = ["http://dcmlp-cms-dev-influxdb:8086"]
-        token = "$INFLUX_TOKEN"
-        organization = "dcmlp"
-        bucket = "ppmpmeaslq05-old"
-      [[inputs.opcua]]
-        endpoint = "opc.tcp://ppmpmeaslq05:4840"
+          urls = ["http://dcmlp-cms-dev-influxdb:8086"]
+          token = "${INFLUXDB_TOKEN_WRITE}"
+          organization = "DC"
+          bucket = "DCMLP_CMS_DB_HoP2_OLD"
+          timeout = "60s"
+          insecure_skip_verify = true

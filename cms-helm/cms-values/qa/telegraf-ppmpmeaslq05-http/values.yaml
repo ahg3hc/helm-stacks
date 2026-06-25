@@ -87,7 +87,7 @@ configmap:
           script = "/etc/telegraf/star/PPMPMeasurementV3_lq05_http_v3.0.star"
 
       [[outputs.influxdb_v2]]
-          urls = ["http://cms-qa-influxdb:8086"]
+          urls = ["http://dcmlp-cms-qa-influxdb:8086"]
           token = "${INFLUXDB_TOKEN_WRITE}"
           organization = "DC"
           bucket = "DCMLP_CMS_DB_HorP"
@@ -97,7 +97,7 @@ configmap:
             device_additionalData_plant = ["HorP"]
 
       [[outputs.influxdb_v2]]
-          urls = ["http://cms-qa-influxdb:8086"]
+          urls = ["http://dcmlp-cms-qa-influxdb:8086"]
           token = "${INFLUXDB_TOKEN_WRITE}"
           organization = "DC"
           bucket = "DCMLP_CMS_DB_EcP"
@@ -107,7 +107,7 @@ configmap:
             device_additionalData_plant = ["EcP"]
 
       [[outputs.influxdb_v2]]
-          urls = ["http://cms-qa-influxdb:8086"]
+          urls = ["http://dcmlp-cms-qa-influxdb:8086"]
           token = "${INFLUXDB_TOKEN_WRITE}"
           organization = "DC"
           bucket = "DCMLP_CMS_DB_BuP2"
@@ -117,7 +117,7 @@ configmap:
             device_additionalData_plant = ["BuP2"]
 
       [[outputs.influxdb_v2]]
-          urls = ["http://cms-qa-influxdb:8086"]
+          urls = ["http://dcmlp-cms-qa-influxdb:8086"]
           token = "${INFLUXDB_TOKEN_WRITE}"
           organization = "DC"
           bucket = "DCMLP_CMS_DB_PkP"
@@ -127,7 +127,7 @@ configmap:
             device_additionalData_plant = ["PkP"]
 
       [[outputs.influxdb_v2]]
-          urls = ["http://cms-qa-influxdb:8086"]
+          urls = ["http://dcmlp-cms-qa-influxdb:8086"]
           token = "${INFLUXDB_TOKEN_WRITE}"
           organization = "DC"
           bucket = "DCMLP_CMS_DB_QueP1"
@@ -137,7 +137,7 @@ configmap:
             device_additionalData_plant = ["QueP1"]
 
       [[outputs.influxdb_v2]]
-          urls = ["http://cms-qa-influxdb:8086"]
+          urls = ["http://dcmlp-cms-qa-influxdb:8086"]
           token = "${INFLUXDB_TOKEN_WRITE}"
           organization = "DC"
           bucket = "DCMLP_CMS_DB_HoP2"
@@ -147,7 +147,7 @@ configmap:
             device_additionalData_plant = ["HoP2"]
 
       [[outputs.influxdb_v2]]
-          urls = ["http://cms-qa-influxdb:8086"]
+          urls = ["http://dcmlp-cms-qa-influxdb:8086"]
           token = "${INFLUXDB_TOKEN_WRITE}"
           organization = "DC"
           bucket = "DCMLP_CMS_DB_FniP"
@@ -157,7 +157,7 @@ configmap:
             device_additionalData_plant = ["FniP"]
 
       [[outputs.influxdb_v2]]
-          urls = ["http://cms-qa-influxdb:8086"]
+          urls = ["http://dcmlp-cms-qa-influxdb:8086"]
           token = "${INFLUXDB_TOKEN_WRITE}"
           organization = "DC"
           bucket = "DCMLP_CMS_DB_MH"

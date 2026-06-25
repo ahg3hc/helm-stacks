@@ -2,15 +2,12 @@ cluster:
   project: cms
 
 apps:
-  # ===== CMS DEV =====
-  cms-dev-grafana:
-    enabled: true
-    repoURL: https://github.com/ahg3hc/helm-stacks.git
-    targetRevision: main
-    chartPath: cms-helm
-    valuePath: cms-values/dev/grafana
-    namespace: ci-dcmlp-openshift
+  # ═══════════════════════════════════════════════════════════════════════════
+  # CMS DEV
+  # Deploy order: databases > reverse-proxy > collectors > cronjobs
+  # ═══════════════════════════════════════════════════════════════════════════
 
+  # ── Layer 1: Databases (deploy first, everything else depends on these) ──
   cms-dev-influxdb:
     enabled: true
     repoURL: https://github.com/ahg3hc/helm-stacks.git
@@ -19,6 +16,7 @@ apps:
     valuePath: cms-values/dev/influxdb
     namespace: ci-dcmlp-openshift
 
+  # ── Layer 2: Reverse proxy ──
   cms-dev-nginx:
     enabled: true
     repoURL: https://github.com/ahg3hc/helm-stacks.git
@@ -27,6 +25,26 @@ apps:
     valuePath: cms-values/dev/nginx
     namespace: ci-dcmlp-openshift
 
+  # ── Layer 3: UI ──
+  cms-dev-grafana:
+    enabled: true
+    repoURL: https://github.com/ahg3hc/helm-stacks.git
+    targetRevision: main
+    chartPath: cms-helm
+    valuePath: cms-values/dev/grafana
+    namespace: ci-dcmlp-openshift
+
+  # ── Layer 4: Telegraf collectors (require influxdb ready) ──
+  # --- Active (replica=1 in SOT) ---
+  cms-dev-telegraf-ppmpmeaslq05-old:
+    enabled: true
+    repoURL: https://github.com/ahg3hc/helm-stacks.git
+    targetRevision: main
+    chartPath: cms-helm
+    valuePath: cms-values/dev/telegraf-ppmpmeaslq05-old
+    namespace: ci-dcmlp-openshift
+
+  # --- Inactive (replica=0 in SOT) ---
   # cms-dev-telegraf-ppmpmachlq10:
   #   enabled: true
   #   repoURL: https://github.com/ahg3hc/helm-stacks.git
@@ -41,14 +59,6 @@ apps:
   #   targetRevision: main
   #   chartPath: cms-helm
   #   valuePath: cms-values/dev/telegraf-ppmpmeaslq05
-  #   namespace: ci-dcmlp-openshift
-
-  # cms-dev-telegraf-ppmpmeaslq05-old:
-  #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
-  #   targetRevision: main
-  #   chartPath: cms-helm
-  #   valuePath: cms-values/dev/telegraf-ppmpmeaslq05-old
   #   namespace: ci-dcmlp-openshift
 
   # cms-dev-telegraf-ppmpmeaslq05-mcm1all:
@@ -91,6 +101,7 @@ apps:
   #   valuePath: cms-values/dev/telegraf-ppmptest2
   #   namespace: ci-dcmlp-openshift
 
+  # ── Layer 5: CronJobs (require influxdb ready) ──
   # cms-dev-cronjob-calc-axis:
   #   enabled: true
   #   repoURL: https://github.com/ahg3hc/helm-stacks.git
@@ -115,15 +126,12 @@ apps:
   #   valuePath: cms-values/dev/cronjob-count-single-field
   #   namespace: ci-dcmlp-openshift
 
-  # ===== CMS QA =====
-  # cms-qa-grafana:
-  #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
-  #   targetRevision: main
-  #   chartPath: cms-helm
-  #   valuePath: cms-values/qa/grafana
-  #   namespace: ci-dcmlp-openshift
+  # ═══════════════════════════════════════════════════════════════════════════
+  # CMS QA
+  # Deploy order: databases > reverse-proxy > collectors
+  # ═══════════════════════════════════════════════════════════════════════════
 
+  # ── Layer 1: Databases ──
   # cms-qa-influxdb:
   #   enabled: true
   #   repoURL: https://github.com/ahg3hc/helm-stacks.git
@@ -140,6 +148,7 @@ apps:
   #   valuePath: cms-values/qa/influxdb3
   #   namespace: ci-dcmlp-openshift
 
+  # ── Layer 2: Reverse proxy ──
   # cms-qa-nginx:
   #   enabled: true
   #   repoURL: https://github.com/ahg3hc/helm-stacks.git
@@ -148,14 +157,17 @@ apps:
   #   valuePath: cms-values/qa/nginx
   #   namespace: ci-dcmlp-openshift
 
-  # cms-qa-telegraf-ppmpmachlq10:
+  # ── Layer 3: UI ──
+  # cms-qa-grafana:
   #   enabled: true
   #   repoURL: https://github.com/ahg3hc/helm-stacks.git
   #   targetRevision: main
   #   chartPath: cms-helm
-  #   valuePath: cms-values/qa/telegraf-ppmpmachlq10
+  #   valuePath: cms-values/qa/grafana
   #   namespace: ci-dcmlp-openshift
 
+  # ── Layer 4: Telegraf collectors (require influxdb ready) ──
+  # --- Active (replica>=1 in SOT) ---
   # cms-qa-telegraf-ppmpmachlq10-http:
   #   enabled: true
   #   repoURL: https://github.com/ahg3hc/helm-stacks.git
@@ -164,18 +176,27 @@ apps:
   #   valuePath: cms-values/qa/telegraf-ppmpmachlq10-http
   #   namespace: ci-dcmlp-openshift
 
-  # cms-qa-telegraf-ppmpmeaslq05:
-  #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
-  #   targetRevision: main
-  #   chartPath: cms-helm
-  #   valuePath: cms-values/qa/telegraf-ppmpmeaslq05
-  #   namespace: ci-dcmlp-openshift
-
   # cms-qa-telegraf-ppmpmeaslq05-http:
   #   enabled: true
   #   repoURL: https://github.com/ahg3hc/helm-stacks.git
   #   targetRevision: main
   #   chartPath: cms-helm
   #   valuePath: cms-values/qa/telegraf-ppmpmeaslq05-http
+  #   namespace: ci-dcmlp-openshift
+
+  # --- Inactive (replica=0 in SOT) ---
+  # cms-qa-telegraf-ppmpmachlq10:
+  #   enabled: true
+  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   targetRevision: main
+  #   chartPath: cms-helm
+  #   valuePath: cms-values/qa/telegraf-ppmpmachlq10
+  #   namespace: ci-dcmlp-openshift
+
+  # cms-qa-telegraf-ppmpmeaslq05:
+  #   enabled: true
+  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   targetRevision: main
+  #   chartPath: cms-helm
+  #   valuePath: cms-values/qa/telegraf-ppmpmeaslq05
   #   namespace: ci-dcmlp-openshift

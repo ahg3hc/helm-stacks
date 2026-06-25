@@ -91,7 +91,7 @@ configmap:
           script = "/etc/telegraf/star/PPMPMachineV3_lq10_mqtt_v2.1.star"
 
       [[outputs.influxdb_v2]]
-          urls = ["http://dcmlp-cms-dev-influxdb:8086"]
+          urls = ["http://cms-dev-influxdb:8086"]
           token = "${INFLUXDB_TOKEN_WRITE}"
           organization = "DC"
           bucket = "DCMLP_CMS_DB_Test"

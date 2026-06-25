@@ -89,7 +89,7 @@ configmap:
           script = "/etc/telegraf/star/PPMPMeasurementV3_lq05_mcm_demo_uc2_miss.star"
 
       [[outputs.influxdb_v2]]
-          urls = ["http://dcmlp-cms-dev-influxdb:8086"]
+          urls = ["http://cms-dev-influxdb:8086"]
           token = "${INFLUXDB_TOKEN_WRITE}"
           organization = "DC"
           bucket = "DCMLP_MCM_DEMO"

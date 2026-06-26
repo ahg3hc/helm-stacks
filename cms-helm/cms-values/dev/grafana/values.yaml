@@ -1,9 +1,7 @@
 deployment:
   enabled: true
   replicas: 1
-  securityContext:
-    fsGroup: 472
-    runAsUser: 472
+  securityContext: {}
   image:
     repository: image-registry.openshift-image-registry.svc:5000/ci-dcmlp-openshift-cms-dev/dcmlp-cm-grafana-custom
     tag: "12.1.1"

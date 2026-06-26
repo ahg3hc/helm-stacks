@@ -36,13 +36,13 @@ apps:
 
   # ── Layer 4: Telegraf collectors (require influxdb ready) ──
   # --- Active (replica=1 in SOT) ---
-  # cms-dev-telegraf-ppmpmeaslq05-old:
-  #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
-  #   targetRevision: main
-  #   chartPath: cms-helm
-  #   valuePath: cms-values/dev/telegraf-ppmpmeaslq05-old
-  #   namespace: ci-dcmlp-openshift
+  cms-dev-telegraf-ppmpmeaslq05-old:
+    enabled: true
+    repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
+    targetRevision: dev
+    chartPath: cms-helm
+    valuePath: cms-values/dev/telegraf-ppmpmeaslq05-old
+    namespace: ci-dcmlp-openshift-cms-dev
 
   # --- Inactive (replica=0 in SOT) ---
   # cms-dev-telegraf-ppmpmachlq10:

@@ -6,7 +6,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: {{ $name }}
-  namespace: openshift-gitops
+  namespace: ci-dcmlp-openshift-cms-dev
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:

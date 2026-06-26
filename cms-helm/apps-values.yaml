@@ -10,29 +10,29 @@ apps:
   # ── Layer 1: Databases (deploy first, everything else depends on these) ──
   cms-dev-influxdb:
     enabled: true
-    repoURL: https://github.com/ahg3hc/helm-stacks.git
-    targetRevision: main
+    repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
+    targetRevision: dev
     chartPath: cms-helm
     valuePath: cms-values/dev/influxdb
-    namespace: ci-dcmlp-openshift
+    namespace: ci-dcmlp-openshift-cms-dev
 
   # ── Layer 2: Reverse proxy ──
   cms-dev-nginx:
     enabled: true
-    repoURL: https://github.com/ahg3hc/helm-stacks.git
-    targetRevision: main
+    repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
+    targetRevision: dev
     chartPath: cms-helm
     valuePath: cms-values/dev/nginx
-    namespace: ci-dcmlp-openshift
+    namespace: ci-dcmlp-openshift-cms-dev
 
   # ── Layer 3: UI ──
   cms-dev-grafana:
     enabled: true
-    repoURL: https://github.com/ahg3hc/helm-stacks.git
-    targetRevision: main
+    repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
+    targetRevision: dev
     chartPath: cms-helm
     valuePath: cms-values/dev/grafana
-    namespace: ci-dcmlp-openshift
+    namespace: ci-dcmlp-openshift-cms-dev
 
   # ── Layer 4: Telegraf collectors (require influxdb ready) ──
   # --- Active (replica=1 in SOT) ---

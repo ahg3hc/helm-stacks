@@ -35,6 +35,13 @@ deployment:
   initContainers:
     - name: check-mqtt-connectivity
       image: busybox
+      resources:
+        limits:
+          cpu: 10m
+          memory: 32Mi
+        requests:
+          cpu: 5m
+          memory: 16Mi
       command:
         - sh
         - -c

@@ -32,6 +32,29 @@ deployment:
         secretKeyRef:
           name: dcmlp-solace-q-secret
           key: MQTT_PASSWORD
+  initContainers:
+    - name: check-mqtt-connectivity
+      image: busybox
+      command:
+        - sh
+        - -c
+        - |
+          echo "Checking connectivity to MQTT broker..."
+          PASS=0
+          for HOST in 10.82.207.7 10.82.207.6; do
+            if nc -zv -w 5 $HOST 10320 2>&1; then
+              echo "$HOST:10320 reachable!"
+              PASS=$((PASS+1))
+            else
+              echo "ERROR: $HOST:10320 NOT reachable"
+            fi
+          done
+          if [ $PASS -eq 0 ]; then
+            echo "FAILED: Neither IP is reachable on port 10320"
+            exit 1
+          fi
+          echo "At least one MQTT broker IP reachable."
+          exit 0
   resources:
     limits:
       cpu: 20m

@@ -17,6 +17,12 @@ deployment:
       configMap:
         name: dcmlp-cms-dev-telegraf-ppmpmeaslq05-old-config
   env:
+    - name: HTTP_PROXY
+      value: "http://rb-proxy-emea.internal.bosch.cloud:8080"
+    - name: HTTPS_PROXY
+      value: "http://rb-proxy-emea.internal.bosch.cloud:8080"
+    - name: NO_PROXY
+      value: "localhost,127.0.0.1,.svc,.cluster.local,dcmlp-cms-dev-influxdb,10.82.207.7,10.82.207.6"
     - name: INFLUXDB_TOKEN_WRITE
       valueFrom:
         secretKeyRef:

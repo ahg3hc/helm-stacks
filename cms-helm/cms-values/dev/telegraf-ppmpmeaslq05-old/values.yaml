@@ -46,9 +46,9 @@ deployment:
         - sh
         - -c
         - |
-          echo "Checking connectivity to MQTT broker..."
+          echo "Checking connectivity to MQTT broker (via ktunnel)..."
           PASS=0
-          for HOST in 10.82.207.7 10.82.207.6; do
+          for HOST in solace.devops.svc.cluster.local; do
             if nc -zv -w 5 $HOST 10320 2>&1; then
               echo "$HOST:10320 reachable!"
               PASS=$((PASS+1))
@@ -57,10 +57,10 @@ deployment:
             fi
           done
           if [ $PASS -eq 0 ]; then
-            echo "FAILED: Neither IP is reachable on port 10320"
+            echo "FAILED: broker not reachable on port 10320"
             exit 1
           fi
-          echo "At least one MQTT broker IP reachable."
+          echo "At least one MQTT broker endpoint reachable."
           exit 0
   resources:
     limits:
@@ -94,7 +94,7 @@ configmap:
           debug = true
 
       [[inputs.mqtt_consumer]]
-          servers = ["mqtts://si0vm02988.de.bosch.com:10320"]
+          servers = ["mqtts://solace.devops.svc.cluster.local:10320"]
           topics = [
             "PPMP/Measurement/V2/HorP/#",
             "PPMP/Measurement/V2/HoP2/#"

@@ -8,41 +8,41 @@ apps:
   # ═══════════════════════════════════════════════════════════════════════════
 
   # ── Layer 1: Databases (deploy first, everything else depends on these) ──
-  cms-dev-influxdb:
-    enabled: true
-    repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
-    targetRevision: dev
-    chartPath: cms-helm
-    valuePath: cms-values/dev/influxdb
-    namespace: ci-dcmlp-openshift-cms-dev
+  # cms-dev-influxdb:
+  #   enabled: true
+  #   repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
+  #   targetRevision: dev
+  #   chartPath: cms-helm
+  #   valuePath: cms-values/dev/influxdb
+  #   namespace: ci-dcmlp-openshift-cms-dev
 
   # ── Layer 2: Reverse proxy ──
-  cms-dev-nginx:
-    enabled: true
-    repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
-    targetRevision: dev
-    chartPath: cms-helm
-    valuePath: cms-values/dev/nginx
-    namespace: ci-dcmlp-openshift-cms-dev
+  # cms-dev-nginx:
+  #   enabled: true
+  #   repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
+  #   targetRevision: dev
+  #   chartPath: cms-helm
+  #   valuePath: cms-values/dev/nginx
+  #   namespace: ci-dcmlp-openshift-cms-dev
 
   # ── Layer 3: UI ──
-  cms-dev-grafana:
-    enabled: true
-    repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
-    targetRevision: dev
-    chartPath: cms-helm
-    valuePath: cms-values/dev/grafana
-    namespace: ci-dcmlp-openshift-cms-dev
+  # cms-dev-grafana:
+  #   enabled: true
+  #   repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
+  #   targetRevision: dev
+  #   chartPath: cms-helm
+  #   valuePath: cms-values/dev/grafana
+  #   namespace: ci-dcmlp-openshift-cms-dev
 
   # ── Layer 4: Telegraf collectors (require influxdb ready) ──
   # --- Active (replica=1 in SOT) ---
-  cms-dev-telegraf-ppmpmeaslq05-old:
-    enabled: true
-    repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
-    targetRevision: dev
-    chartPath: cms-helm
-    valuePath: cms-values/dev/telegraf-ppmpmeaslq05-old
-    namespace: ci-dcmlp-openshift-cms-dev
+  # cms-dev-telegraf-ppmpmeaslq05-old:
+  #   enabled: true
+  #   repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
+  #   targetRevision: dev
+  #   chartPath: cms-helm
+  #   valuePath: cms-values/dev/telegraf-ppmpmeaslq05-old
+  #   namespace: ci-dcmlp-openshift-cms-dev
 
   # --- Inactive (replica=0 in SOT) ---
   # cms-dev-telegraf-ppmpmachlq10:

@@ -2,7 +2,7 @@ deployment:
   enabled: true
   replicas: 1
   image:
-    repository: image-registry.openshift-image-registry.svc:5000/ci-dcmlp-openshift/nginx
+    repository: image-registry.openshift-image-registry.svc:5000/ci-dcmlp-openshift-cms-dev/nginx
     tag: "1.29.3-alpine"
   command:
     - nginx

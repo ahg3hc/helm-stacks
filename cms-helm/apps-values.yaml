@@ -47,7 +47,7 @@ apps:
   # --- Inactive (replica=0 in SOT) ---
   # cms-dev-telegraf-ppmpmachlq10:
   #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
   #   targetRevision: main
   #   chartPath: cms-helm
   #   valuePath: cms-values/dev/telegraf-ppmpmachlq10
@@ -55,7 +55,7 @@ apps:
 
   # cms-dev-telegraf-ppmpmeaslq05:
   #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
   #   targetRevision: main
   #   chartPath: cms-helm
   #   valuePath: cms-values/dev/telegraf-ppmpmeaslq05
@@ -63,7 +63,7 @@ apps:
 
   # cms-dev-telegraf-ppmpmeaslq05-mcm1all:
   #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
   #   targetRevision: main
   #   chartPath: cms-helm
   #   valuePath: cms-values/dev/telegraf-ppmpmeaslq05-mcm1all
@@ -71,7 +71,7 @@ apps:
 
   # cms-dev-telegraf-ppmpmeaslq05-mcm2miss:
   #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
   #   targetRevision: main
   #   chartPath: cms-helm
   #   valuePath: cms-values/dev/telegraf-ppmpmeaslq05-mcm2miss
@@ -79,7 +79,7 @@ apps:
 
   # cms-dev-telegraf-ppmpmeaslq05-mcm2rest:
   #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
   #   targetRevision: main
   #   chartPath: cms-helm
   #   valuePath: cms-values/dev/telegraf-ppmpmeaslq05-mcm2rest
@@ -87,7 +87,7 @@ apps:
 
   # cms-dev-telegraf-ppmptest1:
   #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
   #   targetRevision: main
   #   chartPath: cms-helm
   #   valuePath: cms-values/dev/telegraf-ppmptest1
@@ -95,7 +95,7 @@ apps:
 
   # cms-dev-telegraf-ppmptest2:
   #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
   #   targetRevision: main
   #   chartPath: cms-helm
   #   valuePath: cms-values/dev/telegraf-ppmptest2
@@ -104,7 +104,7 @@ apps:
   # ── Layer 5: CronJobs (require influxdb ready) ──
   # cms-dev-cronjob-calc-axis:
   #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
   #   targetRevision: main
   #   chartPath: cms-helm
   #   valuePath: cms-values/dev/cronjob-calc-axis-test-avg
@@ -112,7 +112,7 @@ apps:
 
   # cms-dev-cronjob-calc-spindle:
   #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
   #   targetRevision: main
   #   chartPath: cms-helm
   #   valuePath: cms-values/dev/cronjob-calc-spindle-test-avg
@@ -120,7 +120,7 @@ apps:
 
   # cms-dev-cronjob-count-field:
   #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
   #   targetRevision: main
   #   chartPath: cms-helm
   #   valuePath: cms-values/dev/cronjob-count-single-field
@@ -132,17 +132,17 @@ apps:
   # ═══════════════════════════════════════════════════════════════════════════
 
   # ── Layer 1: Databases ──
-  # cms-qa-influxdb:
-  #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
-  #   targetRevision: main
-  #   chartPath: cms-helm
-  #   valuePath: cms-values/qa/influxdb
-  #   namespace: ci-dcmlp-openshift
+  cms-qa-influxdb:
+    enabled: true
+    repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
+    targetRevision: dev
+    chartPath: cms-helm
+    valuePath: cms-values/qa/influxdb
+    namespace: ci-dcmlp-openshift-cms-dev
 
   # cms-qa-influxdb3:
   #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
   #   targetRevision: main
   #   chartPath: cms-helm
   #   valuePath: cms-values/qa/influxdb3
@@ -151,7 +151,7 @@ apps:
   # ── Layer 2: Reverse proxy ──
   # cms-qa-nginx:
   #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
   #   targetRevision: main
   #   chartPath: cms-helm
   #   valuePath: cms-values/qa/nginx
@@ -160,7 +160,7 @@ apps:
   # ── Layer 3: UI ──
   # cms-qa-grafana:
   #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
   #   targetRevision: main
   #   chartPath: cms-helm
   #   valuePath: cms-values/qa/grafana
@@ -170,7 +170,7 @@ apps:
   # --- Active (replica>=1 in SOT) ---
   # cms-qa-telegraf-ppmpmachlq10-http:
   #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
   #   targetRevision: main
   #   chartPath: cms-helm
   #   valuePath: cms-values/qa/telegraf-ppmpmachlq10-http
@@ -178,7 +178,7 @@ apps:
 
   # cms-qa-telegraf-ppmpmeaslq05-http:
   #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
   #   targetRevision: main
   #   chartPath: cms-helm
   #   valuePath: cms-values/qa/telegraf-ppmpmeaslq05-http
@@ -187,7 +187,7 @@ apps:
   # --- Inactive (replica=0 in SOT) ---
   # cms-qa-telegraf-ppmpmachlq10:
   #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
   #   targetRevision: main
   #   chartPath: cms-helm
   #   valuePath: cms-values/qa/telegraf-ppmpmachlq10
@@ -195,7 +195,7 @@ apps:
 
   # cms-qa-telegraf-ppmpmeaslq05:
   #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
   #   targetRevision: main
   #   chartPath: cms-helm
   #   valuePath: cms-values/qa/telegraf-ppmpmeaslq05

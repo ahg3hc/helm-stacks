@@ -34,7 +34,7 @@ apps:
     valuePath: cms-values/dev/grafana
     namespace: ci-dcmlp-openshift-cms-dev
 
-  ── Layer 4: Telegraf collectors (require influxdb ready) ──
+  # ── Layer 4: Telegraf collectors (require influxdb ready) ──
   cms-dev-telegraf-ppmpmeaslq05-old:
     enabled: true
     repoURL: https://github.com/ahg3hc/helm-stacks.git
@@ -99,7 +99,7 @@ apps:
     valuePath: cms-values/dev/telegraf-ppmptest2
     namespace: ci-dcmlp-openshift-cms-dev
 
-  ── Layer 5: CronJobs (require influxdb ready) ──
+  # ── Layer 5: CronJobs (require influxdb ready) ──
   cms-dev-cronjob-calc-axis:
     enabled: true
     repoURL: https://github.com/ahg3hc/helm-stacks.git

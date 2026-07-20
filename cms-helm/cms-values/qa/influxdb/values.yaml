@@ -31,7 +31,6 @@ service:
 
 route:
   enabled: true
-  host: cm-db-dcmlp-q.app.bosch.com
   targetPort: 8086
   tls:
     termination: edge

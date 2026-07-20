@@ -129,7 +129,7 @@ apps:
   # Deploy order: databases > reverse-proxy > collectors
   # ═══════════════════════════════════════════════════════════════════════════
 
-  ── Layer 1: Databases ──
+  # ── Layer 1: Databases ──
   cms-qa-influxdb:
     enabled: true
     repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
@@ -146,7 +146,7 @@ apps:
   #   valuePath: cms-values/qa/influxdb3
   #   namespace: ci-dcmlp-openshift
 
-  ── Layer 2: Reverse proxy ──
+  # ── Layer 2: Reverse proxy ──
   cms-qa-nginx:
     enabled: true
     repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git
@@ -155,7 +155,7 @@ apps:
     valuePath: cms-values/qa/nginx
     namespace: ci-dcmlp-openshift
 
-  ── Layer 3: UI ──
+  # ── Layer 3: UI ──
   cms-qa-grafana:
     enabled: true
     repoURL: https://git.digital-easy.link:5000/CMS/helm-stacks.git

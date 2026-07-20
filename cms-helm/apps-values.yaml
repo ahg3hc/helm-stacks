@@ -59,45 +59,45 @@ apps:
     valuePath: cms-values/dev/telegraf-ppmpmeaslq05
     namespace: ci-dcmlp-openshift-cms-dev
 
-  cms-dev-telegraf-ppmpmeaslq05-mcm1all:
-    enabled: true
-    repoURL: https://github.com/ahg3hc/helm-stacks.git
-    targetRevision: dev
-    chartPath: cms-helm
-    valuePath: cms-values/dev/telegraf-ppmpmeaslq05-mcm1all
-    namespace: ci-dcmlp-openshift-cms-dev
+  # cms-dev-telegraf-ppmpmeaslq05-mcm1all:
+  #   enabled: true
+  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   targetRevision: dev
+  #   chartPath: cms-helm
+  #   valuePath: cms-values/dev/telegraf-ppmpmeaslq05-mcm1all
+  #   namespace: ci-dcmlp-openshift-cms-dev
 
-  cms-dev-telegraf-ppmpmeaslq05-mcm2miss:
-    enabled: true
-    repoURL: https://github.com/ahg3hc/helm-stacks.git
-    targetRevision: dev
-    chartPath: cms-helm
-    valuePath: cms-values/dev/telegraf-ppmpmeaslq05-mcm2miss
-    namespace: ci-dcmlp-openshift-cms-dev
+  # cms-dev-telegraf-ppmpmeaslq05-mcm2miss:
+  #   enabled: true
+  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   targetRevision: dev
+  #   chartPath: cms-helm
+  #   valuePath: cms-values/dev/telegraf-ppmpmeaslq05-mcm2miss
+  #   namespace: ci-dcmlp-openshift-cms-dev
 
-  cms-dev-telegraf-ppmpmeaslq05-mcm2rest:
-    enabled: true
-    repoURL: https://github.com/ahg3hc/helm-stacks.git
-    targetRevision: dev
-    chartPath: cms-helm
-    valuePath: cms-values/dev/telegraf-ppmpmeaslq05-mcm2rest
-    namespace: ci-dcmlp-openshift-cms-dev
+  # cms-dev-telegraf-ppmpmeaslq05-mcm2rest:
+  #   enabled: true
+  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   targetRevision: dev
+  #   chartPath: cms-helm
+  #   valuePath: cms-values/dev/telegraf-ppmpmeaslq05-mcm2rest
+  #   namespace: ci-dcmlp-openshift-cms-dev
 
-  cms-dev-telegraf-ppmptest1:
-    enabled: true
-    repoURL: https://github.com/ahg3hc/helm-stacks.git
-    targetRevision: dev
-    chartPath: cms-helm
-    valuePath: cms-values/dev/telegraf-ppmptest1
-    namespace: ci-dcmlp-openshift-cms-dev
+  # cms-dev-telegraf-ppmptest1:
+  #   enabled: true
+  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   targetRevision: dev
+  #   chartPath: cms-helm
+  #   valuePath: cms-values/dev/telegraf-ppmptest1
+  #   namespace: ci-dcmlp-openshift-cms-dev
 
-  cms-dev-telegraf-ppmptest2:
-    enabled: true
-    repoURL: https://github.com/ahg3hc/helm-stacks.git
-    targetRevision: dev
-    chartPath: cms-helm
-    valuePath: cms-values/dev/telegraf-ppmptest2
-    namespace: ci-dcmlp-openshift-cms-dev
+  # cms-dev-telegraf-ppmptest2:
+  #   enabled: true
+  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
+  #   targetRevision: dev
+  #   chartPath: cms-helm
+  #   valuePath: cms-values/dev/telegraf-ppmptest2
+  #   namespace: ci-dcmlp-openshift-cms-dev
 
   # ── Layer 5: CronJobs (require influxdb ready) ──
   cms-dev-cronjob-calc-axis:
@@ -166,21 +166,21 @@ apps:
 
   # ── Layer 4: Telegraf collectors (require influxdb ready) ──
   # --- Active (replica>=1 in SOT) ---
-  # cms-qa-telegraf-ppmpmachlq10-http:
-  #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
-  #   targetRevision: dev
-  #   chartPath: cms-helm
-  #   valuePath: cms-values/qa/telegraf-ppmpmachlq10-http
-  #   namespace: ci-dcmlp-openshift-cms-dev
+  cms-qa-telegraf-ppmpmachlq10-http:
+    enabled: true
+    repoURL: https://github.com/ahg3hc/helm-stacks.git
+    targetRevision: dev
+    chartPath: cms-helm
+    valuePath: cms-values/qa/telegraf-ppmpmachlq10-http
+    namespace: ci-dcmlp-openshift-cms-dev
 
-  # cms-qa-telegraf-ppmpmeaslq05-http:
-  #   enabled: true
-  #   repoURL: https://github.com/ahg3hc/helm-stacks.git
-  #   targetRevision: dev
-  #   chartPath: cms-helm
-  #   valuePath: cms-values/qa/telegraf-ppmpmeaslq05-http
-  #   namespace: ci-dcmlp-openshift-cms-dev
+  cms-qa-telegraf-ppmpmeaslq05-http:
+    enabled: true
+    repoURL: https://github.com/ahg3hc/helm-stacks.git
+    targetRevision: dev
+    chartPath: cms-helm
+    valuePath: cms-values/qa/telegraf-ppmpmeaslq05-http
+    namespace: ci-dcmlp-openshift-cms-dev
 
   # --- Inactive (replica=0 in SOT) ---
   # cms-qa-telegraf-ppmpmachlq10:

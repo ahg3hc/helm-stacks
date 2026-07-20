@@ -19,7 +19,7 @@ deployment:
       cpu: "2"
       memory: 3000Mi
     requests:
-      cpu: 400m
+      cpu: 100m
       memory: 500Mi
 
 service:

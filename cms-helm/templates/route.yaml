@@ -12,7 +12,7 @@ spec:
   {{- end }}
   to:
     kind: Service
-    name: {{ .Release.Name }}
+    name: {{ .Values.route.toName | default .Release.Name }}
     weight: 100
   port:
     targetPort: {{ .Values.route.targetPort }}
@@ -20,6 +20,19 @@ spec:
   tls:
     termination: {{ .Values.route.tls.termination | default "edge" }}
     insecureEdgeTerminationPolicy: {{ .Values.route.tls.insecureEdgeTerminationPolicy | default "Redirect" }}
+    {{- if .Values.route.tls.certificate }}
+    certificate: |
+{{ .Values.route.tls.certificate | trim | indent 6 }}
+    {{- end }}
+    {{- if .Values.route.tls.key }}
+    key: |
+{{ .Values.route.tls.key | trim | indent 6 }}
+    {{- end }}
+    {{- if .Values.route.tls.caCertificate }}
+    caCertificate: |
+{{ .Values.route.tls.caCertificate | trim | indent 6 }}
+    {{- end }}
   {{- end }}
+  wildcardPolicy: {{ .Values.route.wildcardPolicy | default "None" }}
 {{- end }}
 {{- end }}

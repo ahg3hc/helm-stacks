@@ -1,6 +1,6 @@
 deployment:
   enabled: true
-  replicas: 1
+  replicas: 0
   image:
     repository: image-registry.openshift-image-registry.svc:5000/ci-dcmlp-openshift-cms-dev/dcmlp-cm-telegraf
     tag: latest

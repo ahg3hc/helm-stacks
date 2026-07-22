@@ -16,6 +16,7 @@ deployment:
       mountPath: /var/lib/grafana
     - name: dcmlp-cms-dev-grafana-config
       mountPath: /etc/grafana/grafana.ini
+      subPath: grafana.ini
     - name: grafana-email-templates
       mountPath: /etc/grafana/emails
     - name: dcmlp-cms-grafana-plant-layout-horp

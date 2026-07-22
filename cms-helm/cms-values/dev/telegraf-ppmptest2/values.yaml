@@ -85,7 +85,7 @@ configmap:
           script = "/etc/telegraf/star/PPMPMeasurementV3_lq05_mqtt_v3.0.star"
 
       [[outputs.influxdb_v2]]
-          urls = ["http://dcmlp-cms-qa-influxdb3:8181"]
+          urls = ["http://influxdb3-influxdb3-enterprise-ingester:8181"]
           token = "${INFLUXDB_TOKEN_WRITE}"
           bucket = "DCMLP_CMS_DB_HorP"
           timeout = "30s"
